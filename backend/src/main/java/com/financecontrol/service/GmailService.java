@@ -20,7 +20,6 @@ import java.util.List;
 @Slf4j
 public class GmailService {
 
-    @Lazy
     private final Gmail gmail;
     private final EmailParserService emailParserService;
     private final TransactionService transactionService;

@@ -6,7 +6,8 @@ import com.financecontrol.model.Transaction;
 import com.financecontrol.service.GmailService;
 import com.financecontrol.service.TransactionService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,17 @@ import java.util.Map;
 // En prod: restringir al dominio de la app
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class TransactionController {
 
     private final TransactionService transactionService;
     private final GmailService gmailService;
+
+    @Autowired
+    public TransactionController(TransactionService transactionService, @Lazy GmailService gmailService) {
+        this.transactionService = transactionService;
+        this.gmailService = gmailService;
+    }
 
     /**
      * getAll obtiene todas las transacciones, con filtro opcional por rango de fechas.
