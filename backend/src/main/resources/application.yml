@@ -4,7 +4,7 @@ spring:
 
   # Por defecto usa H2 (dev). Cambia a 'prod' para PostgreSQL.
   profiles:
-    active: dev
+    active: prod
 
   jpa:
     hibernate:
@@ -24,7 +24,7 @@ gmail:
 spring:
   config:
     activate:
-      on-profile: prod
+      on-profile: dev
   datasource:
     url: jdbc:h2:file:./data/financedb
     driver-class-name: org.h2.Driver
@@ -43,7 +43,7 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: jdbc:postgresql://localhost:5432/financecontrol
+    url: jdbc:postgresql://finance-control-ddbb-financecontrol-vfhthq.postgresql.hostinger.com:5432/ddbb_financecontrol
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   jpa:
