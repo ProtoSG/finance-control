@@ -24,7 +24,7 @@ FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Usuario no-root por seguridad
-RUN addgroup -S spring && adduser -S spring -G spring
+RUN addgroup -S -g 1001 spring && adduser -S -u 1001 -G spring spring
 
 # Copiar las capas del JAR en orden (de menos a más cambiante)
 COPY --from=build /app/target/layers/dependencies           ./

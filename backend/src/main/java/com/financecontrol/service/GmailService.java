@@ -6,8 +6,6 @@ import com.google.api.services.gmail.model.Message;
 import com.google.api.services.gmail.model.MessagePart;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
@@ -30,11 +28,6 @@ public class GmailService {
     private static final String BCP_QUERY =
             "from:notificaciones@notificacionesbcp.com.pe subject:\"consumo con tu Tarjeta\"";
 
-    /**
-     * syncBcpEmails sincroniza emails nuevos de BCP cada 30 minutos.
-     * @return void.
-     */
-    @Scheduled(fixedDelay = 1800000)
     public void syncBcpEmails() {
         log.info("Sincronizando emails de BCP...");
         try {
